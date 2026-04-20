@@ -1,0 +1,36 @@
+const express = require('express');
+const cors = require('cors');
+
+const app = express();
+app.use(cors());
+
+app.get('/buscar', (req, res) => {
+  const q = req.query.q;
+
+  const resultados = [
+    {
+      nome: `${q} - Pampers`,
+      preco: 89.90,
+      loja: "Amazon",
+      link: "https://amazon.com"
+    },
+    {
+      nome: `${q} - Huggies`,
+      preco: 79.90,
+      loja: "Shopee",
+      link: "https://shopee.com"
+    },
+    {
+      nome: `${q} - Turma da Mônica`,
+      preco: 74.50,
+      loja: "Mercado Livre",
+      link: "https://mercadolivre.com"
+    }
+  ];
+
+  res.json(resultados);
+});
+
+app.listen(3000, () => {
+  console.log("Servidor rodando");
+});
